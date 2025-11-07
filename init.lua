@@ -1,89 +1,3 @@
---[[
-
-=====================================================================
-==================== READ THIS BEFORE CONTINUING ====================
-=====================================================================
-========                                    .-----.          ========
-========         .----------------------.   | === |          ========
-========         |.-""""""""""""""""""-.|   |-----|          ========
-========         ||                    ||   | === |          ========
-========         ||   KICKSTART.NVIM   ||   |-----|          ========
-========         ||                    ||   | === |          ========
-========         ||                    ||   |-----|          ========
-========         ||:Tutor              ||   |:::::|          ========
-========         |'-..................-'|   |____o|          ========
-========         `"")----------------(""`   ___________      ========
-========        /::::::::::|  |::::::::::\  \ no mouse \     ========
-========       /:::========|  |==hjkl==:::\  \ required \    ========
-========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
-========                                                     ========
-=====================================================================
-=====================================================================
-
-What is Kickstart?
-
-  Kickstart.nvim is *not* a distribution.
-
-  Kickstart.nvim is a starting point for your own configuration.
-    The goal is that you can read every line of code, top-to-bottom, understand
-    what your configuration is doing, and modify it to suit your needs.
-
-    Once you've done that, you can start exploring, configuring and tinkering to
-    make Neovim your own! That might mean leaving Kickstart just the way it is for a while
-    or immediately breaking it into modular pieces. It's up to you!
-
-    If you don't know anything about Lua, I recommend taking some time to read through
-    a guide. One possible example which will only take 10-15 minutes:
-      - https://learnxinyminutes.com/docs/lua/
-
-    After understanding a bit more about Lua, you can use `:help lua-guide` as a
-    reference for how Neovim integrates Lua.
-    - :help lua-guide
-    - (or HTML version): https://neovim.io/doc/user/lua-guide.html
-
-Kickstart Guide:
-
-  TODO: The very first thing you should do is to run the command `:Tutor` in Neovim.
-
-    If you don't know what this means, type the following:
-      - <escape key>
-      - :
-      - Tutor
-      - <enter key>
-
-    (If you already know the Neovim basics, you can skip this step.)
-
-  Once you've completed that, you can continue working through **AND READING** the rest
-  of the kickstart init.lua.
-
-  Next, run AND READ `:help`.
-    This will open up a help window with some basic information
-    about reading, navigating and searching the builtin help documentation.
-
-    This should be the first place you go to look when you're stuck or confused
-    with something. It's one of my favorite Neovim features.
-
-    MOST IMPORTANTLY, we provide a keymap "<space>sh" to [s]earch the [h]elp documentation,
-    which is very useful when you're not exactly sure of what you're looking for.
-
-  I have left several `:help X` comments throughout the init.lua
-    These are hints about where to find more information about the relevant settings,
-    plugins or Neovim features used in Kickstart.
-
-   NOTE: Look for lines like this
-
-    Throughout the file. These are for you, the reader, to help you understand what is happening.
-    Feel free to delete them once you know what you're doing, but they should serve as a guide
-    for when you are first encountering a few different constructs in your Neovim config.
-
-If you experience any errors while trying to install kickstart, run `:checkhealth` for more info.
-
-I hope you enjoy your Neovim journey,
-- TJ
-
-P.S. You can delete this when you're done too. It's your config now! :)
---]]
-
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
@@ -91,7 +5,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -102,7 +16,7 @@ vim.g.have_nerd_font = false
 vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 --  Experiment for yourself to see if you like it!
--- vim.o.relativenumber = true
+vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
@@ -141,6 +55,10 @@ vim.o.timeoutlen = 300
 vim.o.splitright = true
 vim.o.splitbelow = true
 
+vim.o.expandtab = true
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
@@ -185,11 +103,12 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
-
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set('i', '<Esc>', '<cmd>echo "Use jk to escape!!"<CR>')
+vim.keymap.set('v', '<Esc>', '<cmd>echo "Use jk to escape!!"<CR>')
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
@@ -205,6 +124,42 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
 
+-- Custom keymaps
+vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Scroll down centered' })
+vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Scroll up centered' })
+vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move line down' })
+vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move line up' })
+
+vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Paste without yank' })
+vim.keymap.set('n', '<leader>d', '"_d', { desc = 'Delete without yank' })
+vim.keymap.set('v', '<leader>d', '"_d', { desc = 'Delete without yank' })
+vim.keymap.set('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', { desc = 'Replace word' })
+
+vim.keymap.set('i', 'jk', '<Esc>', { noremap = false })
+vim.keymap.set('v', 'jk', '<Esc>', { noremap = false })
+vim.keymap.set('n', 'n', 'nzzzv', { noremap = false })
+
+vim.keymap.set('n', '<leader>x', ':bd<CR>', { desc = 'Close buffer' })
+-- Use Alt/Option + Arrow keys instead
+vim.keymap.set('n', '<M-Right>', '<cmd>vertical resize +2<cr>')
+vim.keymap.set('n', '<M-Left>', '<cmd>vertical resize -2<cr>')
+vim.keymap.set('n', '<M-Up>', '<cmd>resize +2<cr>')
+vim.keymap.set('n', '<M-Down>', '<cmd>resize -2<cr>')
+
+vim.keymap.set('n', '<leader>e', ':Ex<CR>', { desc = 'Open file explorer' })
+-- LSP
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition' })
+vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = 'Go to references' })
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover documentation' })
+vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code action' })
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename' })
+
+vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Save' })
+vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = 'Quit' })
+
+-- Stay in visual mode when indenting
+vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and reselect' })
+vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -357,7 +312,124 @@ require('lazy').setup({
   -- you do for a plugin at the top level, you can do for a dependency.
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
+  {
+    'folke/persistence.nvim',
+    event = 'BufReadPre',
+    opts = {
+      dir = vim.fn.expand(vim.fn.stdpath 'state' .. '/sessions/'),
+      options = { 'buffers', 'curdir', 'tabpages', 'winsize' },
+    },
+  },
+  {
+    'goolord/alpha-nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      local alpha = require 'alpha'
+      local dashboard = require 'alpha.themes.dashboard'
+      -- Set custom header (ASCII art)
+      -- Define colors
+      vim.api.nvim_set_hl(0, 'AlphaHeader1', { fg = '#cbd5f7' }) -- Light color
+      vim.api.nvim_set_hl(0, 'AlphaHeader2', { fg = '#8dd8ff' }) -- Cyan
+      vim.api.nvim_set_hl(0, 'AlphaHeader3', { fg = '#8cb4f9' }) -- Blue
+      vim.api.nvim_set_hl(0, 'AlphaHeader4', { fg = '#c8aef9' }) -- Blue
 
+      -- Split header into colored sections
+      local header = {
+        type = 'group',
+        val = {
+          {
+            type = 'text',
+            val = '                                                     ',
+            opts = { hl = 'AlphaHeader1', position = 'center' },
+          },
+          {
+            type = 'text',
+            val = {
+              '  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ',
+            },
+            opts = { hl = 'AlphaHeader1', position = 'center' },
+          },
+          {
+            type = 'text',
+            val = {
+              '  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ',
+              '  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ',
+              '  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ',
+            },
+            opts = { hl = 'AlphaHeader2', position = 'center' },
+          },
+          {
+            type = 'text',
+            val = {
+              '  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ',
+            },
+            opts = { hl = 'AlphaHeader3', position = 'center' },
+          },
+          {
+            type = 'text',
+            val = {
+              '  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ',
+              '                                                     ',
+            },
+            opts = { hl = 'AlphaHeader4', position = 'center' },
+          },
+        },
+      }
+
+      -- Replace your dashboard.section.header with this
+      dashboard.section.header = header
+      vim.api.nvim_set_hl(0, 'AlphaFooter', { fg = '#8dd8ff' })
+      -- 8b
+      dashboard.section.footer.opts.hl = 'AlphaFooter'
+      -- Set menu buttons
+      dashboard.section.buttons.val = {
+        dashboard.button('f', '    Find file', ':Telescope find_files <CR>'),
+        dashboard.button('n', '    New file', ':ene <BAR> startinsert <CR>'),
+        dashboard.button('r', '    Recent files', ':Telescope oldfiles <CR>'),
+        dashboard.button('c', '    Config', ':e ~/.config/nvim/init.lua <CR>'),
+        dashboard.button('s', '    Restore session', ':lua require("persistence").load() <CR>'),
+        dashboard.button('q', '  󰈆  Quit', ':qa<CR>'),
+      }
+      for _, button in ipairs(dashboard.section.buttons.val) do
+        button.opts.cursor = 5 -- Cursor starts after the icon (adjust as needed)
+        button.opts.width = 50
+        button.opts.hl = 'AlphaButtons'
+        button.opts.hl_shortcut = 'AlphaShortcut'
+      end
+      -- Set footer
+      local function footer()
+        return '© Alex Locke 2025'
+      end
+
+      dashboard.section.footer.val = footer()
+      local config = {
+        layout = {
+          { type = 'padding', val = 2 },
+          header,
+          { type = 'padding', val = 2 },
+          dashboard.section.buttons,
+          { type = 'padding', val = 1 },
+          dashboard.section.footer,
+        },
+        opts = {
+          margin = 5,
+        },
+      }
+
+      -- Setup alpha with custom config
+      alpha.setup(config)
+      -- Send config to alpha
+      --      alpha.setup(dashboard.config)
+
+      -- Disable folding on alpha buffer
+      vim.cmd [[autocmd FileType alpha setlocal nofoldenable]]
+    end,
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    config = true,
+  },
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
@@ -889,6 +961,11 @@ require('lazy').setup({
         styles = {
           comments = { italic = false }, -- Disable italics in comments
         },
+        on_highlights = function(h1, colors)
+          h1.LineNrAbove = { fg = '#7aa2f7' }
+          h1.CursorLineNr = { fg = '#ffffff', bold = true }
+          h1.LineNrBelow = { fg = '#7aa2f7' }
+        end,
       }
 
       -- Load the colorscheme here.
@@ -975,9 +1052,9 @@ require('lazy').setup({
   --
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.lint',
+  --  require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
