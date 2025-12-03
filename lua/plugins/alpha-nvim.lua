@@ -17,7 +17,12 @@ return {
       val = {
         {
           type = 'text',
-          val = '                                                     ',
+          val = {
+            '                                                     ',
+            '                                                     ',
+            '                                                     ',
+            '                                                     ',
+          },
           opts = { hl = 'AlphaHeader1', position = 'center' },
         },
         {
