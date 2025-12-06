@@ -59,7 +59,8 @@ vim.keymap.set('n', '<M-Left>', '<cmd>vertical resize -2<cr>')
 vim.keymap.set('n', '<M-Up>', '<cmd>resize +2<cr>')
 vim.keymap.set('n', '<M-Down>', '<cmd>resize -2<cr>')
 
-vim.keymap.set('n', '<leader>e', ':Ex<CR>', { desc = 'Open file explorer' })
+-- vim.keymap.set('n', '<leader>e', ':Ex<CR>', { desc = 'Open file explorer' })
+vim.keymap.set('n', '<leader>e', ':Neotree toggle reveal<CR>', { desc = 'Toggle Neotree and reveal current file' })
 -- LSP
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition' })
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = 'Go to references' })
