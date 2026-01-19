@@ -16,9 +16,24 @@ return {
   opts = {
     filesystem = {
       window = {
+        position = 'float',
         mappings = {
           ['\\'] = 'close_window',
+          ['c'] = {
+            'copy',
+            config = {
+              show_path = 'relative',
+            },
+          },
         },
+      },
+    },
+    event_handlers = {
+      {
+        event = 'neo_tree_buffer_enter',
+        handler = function()
+          vim.opt_local.relativenumber = true
+        end,
       },
     },
   },

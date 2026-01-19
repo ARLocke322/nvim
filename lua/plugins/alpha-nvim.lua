@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   'goolord/alpha-nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
@@ -10,7 +11,15 @@ return {
     vim.api.nvim_set_hl(0, 'AlphaHeader2', { fg = '#8dd8ff' }) -- Cyan
     vim.api.nvim_set_hl(0, 'AlphaHeader3', { fg = '#8cb4f9' }) -- Blue
     vim.api.nvim_set_hl(0, 'AlphaHeader4', { fg = '#c8aef9' }) -- Blue
-
+    --[[
+    vim.api.nvim_set_h1(0, 'AlphaHeader1', { fg = '#3633ff' })
+    vim.api.nvim_set_h2(0, 'AlphaHeader2', { fg = '#5d34ff })
+    vim.api.nvim_set_h2(0, 'AlphaHeader2', { fg = '#7837ff })
+    vim.api.nvim_set_h2(0, 'AlphaHeader2', { fg = '#8e3aff })
+    vim.api.nvim_set_h2(0, 'AlphaHeader2', { fg = '#a23dff })
+    vim.api.nvim_set_h2(0, 'AlphaHeader2', { fg = '#b442ff })
+    ]]
+    --
     -- Split header into colored sections
     local header = {
       type = 'group',
@@ -49,6 +58,7 @@ return {
             '  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ',
             '                                                     ',
           },
+
           opts = { hl = 'AlphaHeader4', position = 'center' },
         },
       },
