@@ -92,7 +92,12 @@ return {
     dashboard.section.footer.val = footer()
     local config = {
       layout = {
-        { type = 'padding', val = 2 },
+        {
+          type = 'padding',
+          val = function()
+            return math.floor(vim.fn.winheight(0) * 0.25)
+          end,
+        },
         header,
         { type = 'padding', val = 2 },
         dashboard.section.buttons,
