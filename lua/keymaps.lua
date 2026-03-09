@@ -75,9 +75,7 @@ vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = 'Quit' })
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and reselect' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
 
-vim.keymap.set('n', '<leader>a', ':lua require("persistence").load() <CR>', { desc = 'Restore session' })
--- [[ Basic Autocommands ]]
---  See `:help lua-guide-autocommands`
+vim.keymap.set('n', '<leader>a', ':lua require("persistence").load()<CR>', { desc = 'Restore session' })
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode

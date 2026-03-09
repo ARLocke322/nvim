@@ -74,6 +74,7 @@ return {
       dashboard.button('f', '    Find file', ':Telescope find_files <CR>'),
       dashboard.button('n', '    New file', ':ene <BAR> startinsert <CR>'),
       dashboard.button('r', '    Recent files', ':Telescope oldfiles <CR>'),
+      dashboard.button('p', '    Projects', ':Telescope projects <CR>'), -- add this
       dashboard.button('c', '    Config', ':e ~/.config/nvim/init.lua <CR>'),
       dashboard.button('s', '    Restore session', ':lua require("persistence").load() <CR>'),
       dashboard.button('q', '  󰈆  Quit', ':qa<CR>'),
