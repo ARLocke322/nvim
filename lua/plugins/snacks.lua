@@ -24,6 +24,7 @@ return {
     },
   },
   init = function()
+    vim.api.nvim_set_hl(0, 'DashboardHeader', { fg = '#FFFFFF' })
     vim.keymap.set('n', '<Leader>gd', function()
       Snacks.picker.lsp_definitions()
     end, { desc = 'Goto Definition' })

@@ -47,7 +47,7 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move line up' })
 vim.keymap.set('x', '<leader>p', '"_dP', { desc = 'Paste without yank' })
 vim.keymap.set('n', '<leader>d', '"_d', { desc = 'Delete without yank' })
 vim.keymap.set('v', '<leader>d', '"_d', { desc = 'Delete without yank' })
-vim.keymap.set('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', { desc = 'Replace word' })
+-- vim.keymap.set('n', '<leader>s', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', { desc = 'Replace word' })
 
 vim.keymap.set('i', 'jk', '<Esc>', { noremap = false })
 vim.keymap.set('n', 'n', 'nzzzv', { noremap = false })
@@ -75,7 +75,7 @@ vim.keymap.set('n', '<leader>q', ':q<CR>', { desc = 'Quit' })
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and reselect' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
 
-vim.keymap.set('n', '<leader>a', ':lua require("persistence").load()<CR>', { desc = 'Restore session' })
+-- vim.keymap.set('n', '<leader>a', ':lua require("persistence").load()<CR>', { desc = 'Restore session' })
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode

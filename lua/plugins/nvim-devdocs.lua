@@ -7,6 +7,6 @@ return {
   },
   opts = {},
   keys = {
-    { '<leader>o', '<cmd>DevdocsOpen<cr>', desc = 'Open DevDocs' },
+    { '<leader>od', '<cmd>DevdocsOpen<cr>', desc = 'Open DevDocs' },
   },
 }

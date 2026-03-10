@@ -42,6 +42,13 @@ return { -- Useful plugin to show you pending keybinds.
 
     -- Document existing key chains
     spec = {
+      { '<leader>1', icon = '󰀱', group = 'Harpoon 1' },
+      { '<leader>2', icon = '󰀱', group = 'Harpoon 2' },
+      { '<leader>3', icon = '󰀱', group = 'Harpoon 3' },
+      { '<leader>4', icon = '󰀱', group = 'Harpoon 4' },
+      { '<leader>o', icon = '', group = '[O]pen [D]evdocs' },
+      { '<leader>w', icon = '', group = 'Save' },
+      { '<leader>w', icon = '', group = 'Goto' },
       { '<leader>s', group = '[S]earch' },
       { '<leader>t', group = '[T]oggle' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
