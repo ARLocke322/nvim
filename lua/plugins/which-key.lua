@@ -46,6 +46,7 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>2', icon = '󰀱', group = 'Harpoon 2' },
       { '<leader>3', icon = '󰀱', group = 'Harpoon 3' },
       { '<leader>4', icon = '󰀱', group = 'Harpoon 4' },
+      { '<leader>a', icon = '󰀱', group = 'Harpoon Buffer' },
       { '<leader>o', icon = '', group = '[O]pen [D]evdocs' },
       { '<leader>w', icon = '', group = 'Save' },
       { '<leader>w', icon = '', group = 'Goto' },
