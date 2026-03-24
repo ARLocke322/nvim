@@ -7,10 +7,43 @@ return { -- Highlight, edit, and navigate code
   config = function()
     local treesitter = require 'nvim-treesitter'
     treesitter.setup()
-    require('nvim-treesitter.install').install { 'ruby', 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+    require('nvim-treesitter.install').install {
+      'ruby',
+      'bash',
+      'c',
+      'diff',
+      'html',
+      'lua',
+      'luadoc',
+      'markdown',
+      'markdown_inline',
+      'query',
+      'vim',
+      'vimdoc',
+      'go',
+      'gomod',
+      'gosum',
+      'gowork',
+    }
 
     vim.api.nvim_create_autocmd('FileType', {
-      pattern = { 'ruby', 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      pattern = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'go',
+        'gomod',
+        'gosum',
+        'gowork',
+      },
       callback = function()
         vim.treesitter.start()
       end,
